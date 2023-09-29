@@ -4,13 +4,13 @@ const rl = readline.createInterface({
   input : process.stdin,
   output : process.stdout
 })
-rl.question("Enter your first name :", (firstName) => {
-  rl.question("Enter your last name :", (lastName) => {
-   rl.question("Enter your born year :" , (birthYear) => {
+rl.question("Enter your first name : ", (firstName) => {
+  rl.question("Enter your last name : ", (lastName) => {
+   rl.question("Enter your born year : " , (birthYear) => {
     const currentYear = 2023
-    const age = currentYear - parseInt(birthYear)
-    const fullName = `${firstName}${lastName}`
-    console.log(`Hello, ${fullName}! You are ${age} years old`)
+    const currentAge = currentYear - parseInt(birthYear)
+    const fullName = `${firstName} ${lastName}`
+    console.log(`Hello, ${fullName}! You are ${currentAge} years old`)
     rl.close()
    })
   })
