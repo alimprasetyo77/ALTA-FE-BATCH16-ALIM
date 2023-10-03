@@ -1,18 +1,18 @@
-function mean(data:number[]){
-  const banyakData = data.length
+function mean(data: number[]) {
+  const panjangData = data.length
   let jumlahTotalData = 0
   for (let index = 0; index < data.length; index++) {
     jumlahTotalData += data[index];
   }
-  return jumlahTotalData / banyakData
+  return jumlahTotalData / panjangData
 }
 
-function median(data:number[]) {
+function median(data: number[]) {
   const panjangData = data.length
   if (panjangData % 2 === 0) {
     let tengah1 = data[(panjangData / 2) - 1];
     let tengah2 = data[panjangData / 2];
-    return (tengah1 + tengah2) / 2;
+    return (tengah1 + tengah2) / 2
   } else {
     let tengah = data[Math.floor(panjangData / 2)];
     return tengah;
@@ -21,7 +21,8 @@ function median(data:number[]) {
 
 function meanMedian(numbers: number[]): string {
   const data = numbers
-  return `${ mean(data)} ${median(data)}`
+  const hasil = `${mean(data)} ${median(data)}`
+  return hasil
 }
 console.log(meanMedian([1, 2, 3, 4])); // 2.5 2.5
 console.log(meanMedian([1, 2, 3, 4, 5])); // 3 3
