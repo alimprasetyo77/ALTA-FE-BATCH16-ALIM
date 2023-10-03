@@ -1,5 +1,17 @@
 function exponentiation(x: number, n: number): number | string {
-  // your code here
+  const bilangan = x
+  const pangkat = n
+  let hasil = 1
+
+  if(bilangan < 0 || pangkat < 0) {
+    return "wrong input"
+  }
+
+  for (let index = 1; index <= pangkat; index++) {
+    hasil *= bilangan 
+  }
+
+  return hasil
 }
 
 console.log(exponentiation(2, 3)); // 8

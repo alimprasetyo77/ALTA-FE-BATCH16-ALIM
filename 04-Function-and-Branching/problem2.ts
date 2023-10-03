@@ -1,5 +1,10 @@
 function palindrome(word: string): boolean {
   // your code here
+  let hasil = ""
+  for (let index = word.length - 1 ; index >= 0; index--) {
+    hasil += word[index];
+  }
+  return hasil === word
 }
 
 console.log(palindrome("civic")); // true
