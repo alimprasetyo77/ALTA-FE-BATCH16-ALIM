@@ -1,5 +1,13 @@
 function removeDuplicates(array: number[]): number {
   // your code here
+  let hasil: number[] = []
+  for (let i = 0; i < array.length; i++) {
+    const hasilPerbandingan = hasil.find(n => n === array[i])
+    if (!hasilPerbandingan) {
+      hasil.push(array[i])
+    }
+  }
+  return hasil.length
 }
 
 console.log(removeDuplicates([2, 3, 3, 3, 6, 9, 9])); // 4

@@ -1,5 +1,11 @@
 function compareString(a: string, b: string): string {
-  // your code here
+  let str = ""
+  for (let index = 0; index < a.length; index++) {
+    if (a[index] === b[index]) {
+      str += a[index]
+    }
+  }
+  return str
 }
 
 console.log(compareString("AKA", "AKASHI")); // AKA
