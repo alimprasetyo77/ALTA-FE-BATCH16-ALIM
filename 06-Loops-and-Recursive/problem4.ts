@@ -1,5 +1,15 @@
 function largestNumber(array: number[]): number {
-  // your code here
+
+  if (array.length === 1) { // jika element array tersisa 1 maka return element
+    return array[0]
+  }
+
+  const firstElement = array[0] // element pertama 
+
+  const hapusFirstElement = array.slice(1) // hapus element pertama | ambil element kedua setelah element pertama 
+
+  const hasil = largestNumber(hapusFirstElement) // setiap iterasi hapus satu element array
+  return firstElement > hasil ? firstElement : hasil
 }
 
 console.log(largestNumber([5, 2, 67, 37, 85, 19, 10])); // 85

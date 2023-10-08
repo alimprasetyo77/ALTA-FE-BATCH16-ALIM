@@ -1,5 +1,11 @@
 function exponentiation(x: number, n: number): number | string {
-  // your code here
+  if (x < 0 || n < 0) return "wrong input"
+  if (n === 0) {
+    return 1
+  } else {
+    const result = x * Number(exponentiation(x, n - 1))
+    return result
+  }
 }
 
 console.log(exponentiation(2, 3)); // 8
