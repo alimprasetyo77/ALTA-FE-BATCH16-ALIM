@@ -15,9 +15,7 @@ function playingDomino(cards: number[][], deck: number[]): number[] {
   return kartuYgCocok.length > 0 ? kartuYgCocok : [];
 }
 
-function jumlahkanArray() {
 
-}
 
 
 console.log(
