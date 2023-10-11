@@ -1,6 +1,24 @@
 function playingDomino(cards: number[][], deck: number[]): number[] {
-  // your code here
+  let kartuYgCocok: number[] = []
+  let jumlahKartuTertinggi = 0
+  for (let index = 0; index < cards.length; index++) {
+    const kartuSekarang = cards[index]
+    if (kartuSekarang.includes(deck[0]) || kartuSekarang.includes(deck[1])) {
+      const jumlahKartuSekarang = kartuSekarang[0] + kartuSekarang[1]
+      if (jumlahKartuSekarang > jumlahKartuTertinggi) {
+        jumlahKartuTertinggi = jumlahKartuSekarang
+        kartuYgCocok = kartuSekarang
+      }
+    }
+  }
+
+  return kartuYgCocok.length > 0 ? kartuYgCocok : [];
 }
+
+function jumlahkanArray() {
+
+}
+
 
 console.log(
   playingDomino(

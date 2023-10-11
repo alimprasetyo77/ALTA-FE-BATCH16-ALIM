@@ -1,5 +1,18 @@
-function mostAppearItem(items: string[]): void {
-  // your code here
+interface hasil {
+  [key: string]: number
+}
+function mostAppearItem(items: string[]): any {
+  let hasil: hasil = {}
+  for (let i = 0; i < items.length; i++) {
+    if (hasil[items[i]]) {
+      hasil[items[i]] += 1
+    } else {
+      hasil[items[i]] = 1
+    }
+  }
+
+  const sortedEntries = Object.entries(hasil).sort((a, b) => a[1] - b[1]) // Ubah ke array
+  return Object.fromEntries(sortedEntries) // kembalikan ke object
 }
 
 console.log(mostAppearItem(["js", "js", "golang", "ruby", "ruby", "js", "js"])); // golang->1 ruby->2 js->4
