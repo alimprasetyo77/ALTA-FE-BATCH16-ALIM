@@ -1,5 +1,16 @@
 function findMinAndMax(arr: number[]): string {
-  // your code here
+  let min: number[] = [0, 0]
+  let max: number[] = [0, 0]
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > max[0]) {
+      max = [arr[i], i]
+    }
+    if (arr[i] < min[0]) {
+      min = [arr[i], i]
+
+    }
+  }
+  return `min: ${min[0]} index: ${min[1]} max: ${max[0]} index: ${max[1]}`
 }
 
 console.log(findMinAndMax([5, 7, 4, -2, -1, 8])); // min: -2 index: 3 max: 8 index: 5
