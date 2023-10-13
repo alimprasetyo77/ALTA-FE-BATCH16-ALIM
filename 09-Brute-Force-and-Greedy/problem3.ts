@@ -1,5 +1,14 @@
 function isPangram(texts: string): boolean {
-  // your code here
+  const aplphabet = "abcdefghijklmnopqrstuvwxyz"
+  let hasil: boolean = false
+  for (let i = 0; i < aplphabet.length; i++) {
+    if (texts.includes(aplphabet[i])) {
+      hasil = true
+    } else {
+      hasil = false
+    }
+  }
+  return hasil
 }
 
 console.log(isPangram("The quick brown fox jumps over the lazy dog")); // true
