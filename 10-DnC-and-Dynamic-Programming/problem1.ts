@@ -1,7 +1,12 @@
 function fiboTopDown(n: number): number {
-  // your code here
+  let result = 0
+  if (n <= 1) {
+    return n
+  } else {
+    result = fiboTopDown(n - 1) + fiboTopDown(n - 2)
+  }
+  return result
 }
-
 console.log(fiboTopDown(0)); // 0
 console.log(fiboTopDown(1)); // 1
 console.log(fiboTopDown(2)); // 1
