@@ -4,7 +4,7 @@ function frog(jumps: number[]): number {
     const biaya1 = totalBiaya[i - 1] + Math.abs(jumps[i] - jumps[i - 1]);
     const biaya2 = totalBiaya[i - 2] + Math.abs(jumps[i] - jumps[i - 2]);
 
-    if (biaya1 < biaya2) {
+    if (biaya1 <= biaya2) {
       totalBiaya.push(biaya1);
     } else {
       totalBiaya.push(biaya2);

@@ -14,12 +14,17 @@ function romanNumerals(value: number): string {
     [4, 'IV'],
     [1, 'I']
   ];
+  let result = '';
+
   for (let i = 0; i < angkaRomawi.length; i++) {
-    if (value >= Number(angkaRomawi[i][0])) {
-      return angkaRomawi[i][1] + romanNumerals(value - Number(angkaRomawi[i][0]));
+    // simpan element angka lalu bandingkan dengan value(parameter) jika true, simpan angka Romawi dan kurangi value(parameter) dengan element di index sekarang
+    const element = Number(angkaRomawi[i][0]);
+    while (value >= element) {
+      result += angkaRomawi[i][1]
+      value -= element
     }
   }
-  return ""
+  return result
 }
 
 console.log(romanNumerals(6)); // VI
