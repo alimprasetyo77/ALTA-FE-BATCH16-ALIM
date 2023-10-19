@@ -1,5 +1,16 @@
 function cetakTablePerkalian(number: number): void {
-  // Your Solution Code Here
+  let result = ""
+  for (let i = 1; i <= number; i++) {
+    for (let j = 1; j <= number; j++) {
+      if (i * j > 9) {
+        result += `${i * j} `
+      } else {
+        result += ` ${i * j} `
+      }
+    }
+    result += "\n"
+  }
+  console.log(result)
 }
 
 cetakTablePerkalian(9);
