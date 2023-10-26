@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Mulish&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 125px 0 125px;
+  height: 89px;
+  box-shadow: 0px 3px 6px #c1c3c736;
+}
+
+.link-nav {
+  display: flex;
+  font-family: "Mulish", sans-serif;
+  gap: 16px;
+  list-style: none;
+}
+
+.link-nav li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 13px;
+  color: #19345e;
+}
+
+.link-nav li:nth-child(1) a {
+  color: #f47522;
+}
+
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 76px;
+  height: 100%;
+  background-image: url("../images/bg-img.png");
+  background-size: cover;
+  background-position: center;
+}
+
+section img {
+  width: 375px;
+  border-radius: 100%;
+}
+
+.description-content {
+  color: #19345e;
+}
+
+.description-content h3 {
+  font-size: 25px;
+}
+
+.description-content h1 {
+  font-size: 85px;
+}
+.description-content span {
+  display: block;
+  font-size: 35px;
+  font-weight: 500;
+}
+.description-content button {
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #f47522;
+  border-radius: 43px;
+  border: 2px solid #f47522;
+  padding: 12px 28px;
+  margin-top: 31px;
+}
+
+@media (max-width: 1024px) { 
+  nav{
+    padding: 0px 90px;
+  }
+  section {
+    gap: 60px;
+  }
+  section img {
+    width: 300px;
+  }
+  .description-content h3{
+    font-size: 22px;
+  }
+  .description-content h1 {
+    font-size: 65px;
+  }
+  .description-content span {
+    font-size: 25px;
+  }
+  .description-content button {
+    padding: 10px 26px;
+    font-size: 14px;
+  }  
+ }
+
+@media (max-width: 768px) {
+  nav{
+    padding: 0px 65px;
+  }
+  section img {
+    width: 250px;
+  }
+  .description-content h3{
+    font-size: 20px;
+  }
+  .description-content h1 {
+    font-size: 45px;
+  }
+  .description-content span {
+    font-size: 20px;
+  }
+  .description-content button {
+    padding: 8px 24px;
+    font-size: 12px;
+  }
+
+}
