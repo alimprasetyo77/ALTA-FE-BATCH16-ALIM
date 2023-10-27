@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Mulish&display=swap");
 
 * {
   margin: 0;
   padding: 0;
 }
 
-body{
-  font-family: 'Roboto', sans-serif;
+body {
+  font-family: "Roboto", sans-serif;
   height: 100vh;
   overflow-x: hidden;
 }
@@ -25,33 +25,31 @@ nav {
 
 .link-nav {
   display: flex;
-  font-family: 'Mulish', sans-serif;
+  font-family: "Mulish", sans-serif;
   gap: 16px;
   list-style: none;
-  
 }
 
-.link-nav li a{
+.link-nav li a {
   text-decoration: none;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 13px;
-  color: #19345E;
+  color: #19345e;
 }
 
-.link-nav li:nth-child(2) a{
-  color: #F47522;
+.link-nav li:nth-child(2) a {
+  color: #f47522;
 }
 
 section {
   display: flex;
   flex-direction: column;
   height: 100%;
-  
 }
 #header {
-  background-color: #F4F7FC;
-  color: #19345E;
+  background-color: #f4f7fc;
+  color: #19345e;
   padding: 40px 0px 40px 125px;
   width: 100%;
   font-size: 30px;
@@ -65,23 +63,21 @@ section {
   height: 100%;
   padding: 50px 125px;
   gap: 6rem;
-
 }
-.content .left{
+.content .left {
   display: flex;
   flex-direction: column;
   /* width: 30%; */
   flex: 1;
   gap: 35px 0;
-  color: #19345E;
+  color: #19345e;
   /* border: 1px solid black; */
-
 }
-.content .left p{
+.content .left p {
   font-size: 16px;
   font-weight: 400;
 }
-.content .education h3{
+.content .education h3 {
   font-size: 22px;
   margin: 13px 0;
 }
@@ -92,16 +88,16 @@ section {
   margin: 0 20px;
 }
 
-.content .education #year{
+.content .education #year {
   font-size: 18px;
   font-weight: bold;
 }
-.content .education #last-education{
-  font-weight: 700 ;
+.content .education #last-education {
+  font-weight: 700;
   font-size: 16px;
   text-transform: uppercase;
 }
-.content .education #major-field{
+.content .education #major-field {
   font-weight: 400;
   font-size: 16px;
   text-transform: capitalize;
@@ -123,11 +119,12 @@ section {
   font-size: 14px;
 }
 
-.content .skills table tr td,th {
+.content .skills table tr td,
+th {
   padding: 6px 18px;
   text-align: left;
 }
-.content .right{
+.content .right {
   /* width: 70%; */
   display: flex;
   flex: 1;
@@ -153,15 +150,14 @@ section {
   position: absolute;
   top: 83%;
   left: -13%;
-
 }
 
-.footer{
+.footer {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   gap: 20px;
   padding: 45px 125px;
-  background-color: #19345E;
+  background-color: #19345e;
   color: white;
   text-align: center;
   place-content: center;
@@ -179,7 +175,7 @@ section {
   gap: 20px;
 }
 .footer .social-media span {
-  margin-right: 70px;  
+  margin-right: 70px;
   font-size: 14px;
 }
 .footer span {
@@ -188,21 +184,20 @@ section {
   align-self: center;
 }
 
-@media (max-width: 1280px){  
-  nav{
+@media (max-width: 1280px) {
+  nav {
     padding: 0px 90px;
   }
-  #header{
+  #header {
     padding: 40px 0px 40px 90px;
-  
-    }
-    /* .content .right div :nth-child(1) {
+  }
+  /* .content .right div :nth-child(1) {
       width: 280px;
       border-radius: 10px;
     } */
-} 
-@media (max-width: 1024px){
-  #header{
+}
+@media (max-width: 1024px) {
+  #header {
     font-size: 25px;
   }
   .content {
@@ -219,16 +214,15 @@ section {
   .content .right div :nth-child(2) {
     width: 90px;
   }
-  .footer{
-  padding: 45px 65px;
-
+  .footer {
+    padding: 45px 65px;
   }
 }
 @media (max-width: 768px) {
-  nav{
+  nav {
     padding: 0px 65px;
   }
   .content {
-    padding : 30px 65px;
+    padding: 30px 65px;
   }
 }

@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+}
+
+nav {
+  padding: 0px 125px !important;
+  height: 89px;
+  box-shadow: 0px 3px 6px #c1c3c736;
+}
+.navbar-nav {
+  font-family: "Mulish", sans-serif;
+  font-weight: bold;
+  font-size: 13px;
+
+
+}
+.navbar-nav a {
+  color: #19345e;
+}
+#active {
+  color: #f47522;
+}
+section {
+  color: #19345e;
+  height: 100%;
+}
+#experience {
+  font-size: 40px;
+  background-color: #f4f7fc;
+  padding: 40px 125px;
+}
+section .card {
+  position: relative;
+  color: #19345e;
+  box-shadow: 0px 7px 15px #c3c3c343;
+  border: 1px solid #e2e2e2;
+}
+
+section #circle {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  background-color: #19345e;
+  top: 50%;
+  left: -157px;
+}
+section .row {
+  padding: 70px 110px;
+}
+
+section #column {
+  position: relative;
+}
+section #column::after {
+  position: absolute;
+  content: " ";
+  width: 1px;
+  background-color: #cfd6e2;
+  height: 100%;
+  left: -137px;
+  z-index: -1;
+}
+section .card .card-title {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+section .card .card-subtitle {
+  font-size: 15px;
+  color: #acacac;
+  margin-bottom: 8px;
+}
+section .card ul li {
+  font-size: 14px;
+}
+section .card .card-body {
+  padding: 19px;
+}
+section .card .card-body hr {
+  color: #acacac;
+  padding: 0px;
+  margin-bottom: 8px;
+}
+section .card .card-body ul {
+  list-style: url("../images/minus-3108.svg");
+  padding: 0px 12px;
+  margin: 0px;
+}
+
+@media (max-width: 1024px) {
+  section .row {
+    padding: 30px 50px;
+    
+  }
+ 
+}
+
+@media (max-width: 990px) {
+ 
+  nav {
+    padding: 0px 65px !important;
+    /* height: 89px; */
+    /* box-shadow: 0px 3px 6px #c1c3c736; */
+  }
+  #experience {
+    font-size: 25px;
+    background-color: #f4f7fc;
+    padding: 30px 65px;
+  }
+  section .card .card-title {
+    font-size:17px;
+    margin-bottom: 8px;
+  }
+  section .card .card-subtitle {
+    font-size: 13px;
+    color: #acacac;
+    margin-bottom: 8px;
+  }
+  section .card ul li {
+    font-size: 13px;
+  }
+  section .card .card-body {
+    padding: 19px;
+  }
+  
+}
+
