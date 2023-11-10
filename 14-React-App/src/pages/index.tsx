@@ -16,15 +16,15 @@ const index = () => {
   const fetchData = async () => {
     try {
       const result = await getBooks()
-      setBooks(result.payload.datas)
+      setBooks(result.payload.datas.slice(0, 5))
     } catch (error) {
       console.log(error)
     }
   }
   return (
-    <Layout>
-      <div className="w-full flex flex-col items-center justify-around gap-10 ">
-        <div className="container grid grid-cols-4 gap-8 ">
+    <Layout height="min-h-screen">
+      <div className="w-full flex flex-col items-center justify-around gap-0 py-8 px-12">
+        <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
           <div className="flex flex-col gap-y-5 bg-white py-5 px-10 rounded-sm border shadow justify-center hover:shadow-lg  hover:scale-105 transform duration-300">
             <BsFillCartDashFill class={"text-2xl text-indigo-700"} />
             <span className="text-4xl font-semibold">{Math.floor(Math.random() * 1000)}</span>
@@ -48,13 +48,14 @@ const index = () => {
 
         </div>
         <div className="container">
-          <h1 className="text-3xl font-bold mb-6 text-gray-700">Trending Books</h1>
-          <div className="grid grid-cols-5 gap-4">
+          <h1 className="text-3xl font-bold mb-6 text-gray-700">New Release Books</h1>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {books.map(book => (
               <CardBook key={book.id} data={book} />
             ))}
 
           </div>
+
         </div>
       </div>
     </Layout>

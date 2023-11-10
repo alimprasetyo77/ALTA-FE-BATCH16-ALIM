@@ -1,29 +1,38 @@
 import { useState } from 'react'
-import { BsArrowLeftCircleFill, BsFillBookFill } from "react-icons/bs"
+import { BsFillBookFill } from "react-icons/bs"
 import { FaHistory } from 'react-icons/fa'
+import { RiLogoutCircleRLine } from 'react-icons/ri'
 import { Link } from 'react-router-dom'
 
 
-
 const SideBar = () => {
-  const [activeSideBar, setActiveSideBar] = useState(true)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isLogin, setIsLogin] = useState(sessionStorage.getItem("role"))
+  const [isLogin, setIsLogin] = useState(localStorage.getItem("token"))
 
+  const logout = () => {
+    localStorage.removeItem("token")
+    window.location.href = "/"
+  }
   return (
-    <div className={`border  flex flex-col flex-shrink-0 gap-y-4  bg-white relative ${activeSideBar ? "w-64 " : "w-20 py-3 px-4 items-center"} transition-all duration-200 ease-out min-h-screen`}>
-      <Link to={"/list-books"} className={` hover:bg-gray-100 py-6 px-8`}>
-        <span className='flex items-center gap-x-4 cursor-pointer font-medium'><BsFillBookFill />{activeSideBar ? "List of Books" : " "}</span>
+    <div className={`border flex flex-col flex-shrink-0 gap-y-4 bg-white min-h-screen w-64 p-4  `}>
+      <Link to={"/list-books"} className={` hover:bg-gray-100 py-6 px-8 duration-200 font-Montserrat rounded-lg `} title='List of Books'>
+        <span className={`flex items-center gap-x-4 cursor-pointer font-medium`}><BsFillBookFill className={"text-lg text-gray-900"} />List Books</span>
       </Link>
-
       {isLogin ?
-        <Link to={"/history"} className={` hover:bg-gray-100  py-6 px-8`}>
-          <span className='flex items-center gap-x-4 cursor-pointer font-medium'><FaHistory />{activeSideBar ? "History Borrow" : " "}</span>
-        </Link>
+        <>
+          <Link to={"/history"} className={` hover:bg-gray-100  py-6 px-8 duration-200 font-Montserrat rounded-lg`} title='History Borrow'>
+            <span className={`flex items-center gap-x-4 cursor-pointer font-medium`}><FaHistory className={"text-lg text-gray-900"} />History Borrow</span>
+          </Link>
+          <hr />
+          <Link to={'/'} className={`flex items-center gap-x-4 cursor-pointer font-medium hover:bg-gray-100  py-6 px-8 duration-200 font-Montserrat rounded-lg`} onClick={logout}>
+            <RiLogoutCircleRLine />
+            <button>Log Out</button>
+          </Link>
+        </>
         :
         null
       }
-      <button onClick={() => setActiveSideBar(!activeSideBar)} className={`text-2xl text-gray-500 absolute right-7 bottom-5  ${activeSideBar ? "rotate-0" : "rotate-180"}`}> <BsArrowLeftCircleFill /> </button>
+
     </div>
   )
 }

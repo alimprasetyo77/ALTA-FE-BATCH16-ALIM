@@ -7,7 +7,7 @@ const ListBook = () => {
         <h1 className="font-semibold text-4xl  text-gray-700">Books </h1>
         <button className="py-3 px-6 rounded outline-none bg-teal-500 text-white font-semibold text-sm hover:opacity-80 transition duration-200">Add a Book</button>
       </div>
-      <TableBook />
+      <TableBook borrowNameActive={false} />
     </div>
   )
 }

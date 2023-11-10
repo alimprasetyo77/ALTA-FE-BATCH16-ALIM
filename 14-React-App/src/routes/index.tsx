@@ -39,7 +39,7 @@ const router = () => {
       element: <EditProfile />
     },
     {
-      path: "/detail-book",
+      path: "/detail-book/:id",
       element: <DetailBook />
     }
 

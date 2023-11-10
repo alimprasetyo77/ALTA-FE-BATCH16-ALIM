@@ -1,26 +1,26 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react"
 import Navbar from "../../components/Navbar"
-import { useNavigate } from "react-router-dom"
+import { handleLogin } from "../../utils/apis/auth"
 
 const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const navigate = useNavigate()
-  const login = (e: { preventDefault: () => void }) => {
+
+  const login = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
-    if (email && password) {
-      if (email === "admin@gmail.com" && password === "a") {
-        sessionStorage.setItem("role", "admin")
-        navigate("/")
-        return
-      }
-      sessionStorage.setItem("role", "user")
-      navigate("/")
-    } else {
-      navigate("/login")
-      alert("Login gagal")
+    try {
+      const result = await handleLogin(email, password)
+      const token = result.payload.token
+      localStorage.setItem("token", token)
+      window.location.href = "/"
+    } catch (error) {
+      alert(error)
     }
+
   }
+
+
   return (
     <>
       <Navbar />
