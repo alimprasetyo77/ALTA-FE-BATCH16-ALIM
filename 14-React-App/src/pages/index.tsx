@@ -22,7 +22,7 @@ const index = () => {
     }
   }
   return (
-    <Layout height="min-h-screen">
+    <Layout >
       <div className="w-full flex flex-col items-center justify-around gap-0 py-8 px-12">
         <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
           <div className="flex flex-col gap-y-5 bg-white py-5 px-10 rounded-sm border shadow justify-center hover:shadow-lg  hover:scale-105 transform duration-300">

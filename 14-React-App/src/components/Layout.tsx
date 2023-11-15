@@ -4,12 +4,11 @@ import SideBar from "./SideBar"
 
 interface Props {
   children: ReactNode,
-  height?: string
 }
 
-const Layout = ({ children, height }: Readonly<Props>) => {
+const Layout = ({ children }: Readonly<Props>) => {
   return (
-    <div className={`font-roboto  ${height ? height : "h-screen"}`}>
+    <div className="font-roboto  min-h-screen">
       <Navbar />
       <div className="bg-gray-100 h-full flex">
         <SideBar />

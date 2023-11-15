@@ -54,7 +54,7 @@ const EditProfile = () => {
   }
 
   return (
-    <Layout height='min-h-screen'>
+    <Layout>
       <div className='py-16 px-32  flex-grow space-y-10'>
 
         <h1 className='text-4xl font-semibold font-Montserrat'>Settings</h1>
