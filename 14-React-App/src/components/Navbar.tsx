@@ -2,7 +2,7 @@
 import { useState } from "react"
 import { AiFillSetting } from "react-icons/ai"
 import { BsChevronDown, BsSunFill } from "react-icons/bs"
-import { FaUserEdit } from "react-icons/fa"
+import { FaShoppingBag, FaShoppingCart, FaUserEdit } from "react-icons/fa"
 import { Link } from "react-router-dom"
 import { useToken } from "../utils/contexts/token"
 import { BiSolidMoon } from "react-icons/bi"
@@ -21,7 +21,7 @@ const Navbar = () => {
 
       </Link>
 
-      <div className="flex gap-x-8">
+      <div className="flex gap-x-8 flex-row-reverse">
         {token ?
           <div className="flex items-center gap-x-2 relative cursor-pointer " onClick={() => setActive(!active)}>
             <div className="flex items-center gap-x-2 hover:bg-gray-100 dark:hover:bg-gray-700 duration-200 rounded-lg p-3">
@@ -59,7 +59,8 @@ const Navbar = () => {
             </Link>
           </div>
         }
-        <button className="relative overflow-hidden w-16 bg-gray-100 border dark:border-gray-700 dark:bg-gray-800 flex items-center justify-start py-2 px-4 rounded-full outline-none" onClick={() => toggleTheme()}>
+
+        <button className="relative overflow-hidden w-16 bg-gray-100 border dark:border-gray-700 dark:bg-gray-800 flex items-center justify-start py-6 px-3 rounded-full outline-none" onClick={() => toggleTheme()}>
           {/* <span className={` flex items-center bg-gray-200 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600`}>
             {theme === "dark" ? <BsSunFill className={"text-xl"} /> : <BiSolidMoon className={"text-xl"} />}
           </span> */}
@@ -70,7 +71,9 @@ const Navbar = () => {
             <BiSolidMoon className={"text-xl"} />
           </span>
         </button>
-
+        <button>
+          <FaShoppingBag className={"text-xl "} />
+        </button>
       </div>
     </div>
   )
