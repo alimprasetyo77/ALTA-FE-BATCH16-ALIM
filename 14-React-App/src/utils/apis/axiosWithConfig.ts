@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from "axios";
 
 let bearerToken = "";
@@ -9,8 +8,7 @@ export const setAxiosConfig = (token: string) => {
 };
 
 axiosWithConfig.interceptors.request.use((axiosConfig) => {
-  const token = localStorage.getItem("token");
-  axiosConfig.headers.Authorization = `Bearer ${token}`;
+  axiosConfig.headers.Authorization = `Bearer ${bearerToken}`;
   return axiosConfig
 });
 
