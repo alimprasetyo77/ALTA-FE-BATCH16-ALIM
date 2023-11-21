@@ -21,9 +21,9 @@ const ModalEditBorrow = ({ id, isOpen, closeModal }: props) => {
   const { register, handleSubmit, formState: { errors, isSubmitting }, setValue } = useForm({
     resolver: zodResolver(borrowPayload),
     defaultValues: {
-      borrow_date: "",
-      due_date: "",
-      return_date: "",
+      borrow_date: new Date(),
+      due_date: new Date(),
+      return_date: new Date(),
     }
   });
 
@@ -31,7 +31,7 @@ const ModalEditBorrow = ({ id, isOpen, closeModal }: props) => {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const day = String(date.getDate()).padStart(2, "0");
-    return `${year}-${month}-${day}`;
+    return new Date(`${year}-${month}-${day}`);
   }
   useEffect(() => {
     if (id) {

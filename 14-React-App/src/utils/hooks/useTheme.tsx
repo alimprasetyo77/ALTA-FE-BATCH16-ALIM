@@ -17,9 +17,15 @@ function useTheme() {
     }
   }, [theme]);
 
-  const toggleTheme = () => {
-    const newValue = theme === "dark" ? "light" : "dark";
-    setTheme(newValue);
+  const toggleTheme = (mode?: Theme) => {
+    if (mode) {
+      setTheme(mode)
+      return
+    } else {
+
+      const newValue = theme === "dark" ? "light" : "dark";
+      setTheme(newValue);
+    }
   };
 
   return { toggleTheme, theme };

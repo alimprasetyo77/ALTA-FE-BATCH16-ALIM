@@ -1,15 +1,25 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import Layout from "../../components/Layout"
 import { getDetailBook } from "../../utils/apis/books/api"
 import { useParams } from "react-router-dom"
 import { Book } from "../../utils/apis/books"
 import { useToken } from "../../utils/contexts/token"
-import { createBorrow } from "../../utils/apis/borrow/api"
+import useCartStore from "../../utils/state"
 const DetailBook = () => {
+  const { cart, addBook } = useCartStore()
   const [book, setBook] = useState<Book>()
   const { user } = useToken()
   const { id } = useParams()
+
+  const isInCart = useMemo(() => {
+    const checkCart = cart.find((item) => item.id === book?.id);
+
+    if (checkCart) return true;
+
+    return false;
+  }, [cart]);
+
   useEffect(() => {
     getBook()
   }, [])
@@ -23,17 +33,9 @@ const DetailBook = () => {
     }
   }
 
-  const borrowBook = async () => {
-    const date = {
-      bookId: [3, 4],
-      borrow_date: new Date()
-    }
-    try {
-      const result = await createBorrow(date)
-      alert(result.message)
-    } catch (error) {
-      alert(error)
-    }
+  function onClickBorrow() {
+    addBook(book!);
+    alert("Book has been added to cart.")
   }
   return (
     <Layout>
@@ -48,7 +50,7 @@ const DetailBook = () => {
               <span className="text-sm text-gray-500 dark:text-white whitespace-nowrap">Author</span>
               <span className="text-sm font-semibold text-gray-800 dark:text-white whitespace-nowrap">{book?.author}</span>
             </div>
-            {user.role === "user" && <button className="w-1/4 px-10 py-3 rounded bg-sky-400 text-white font-semibold text-sm" onClick={borrowBook}>Borrow</button>}
+            {user.role === "user" && <button className="w-1/4 px-10 py-3 rounded bg-sky-400 text-white font-semibold text-sm disabled:cursor-not-allowed" disabled={isInCart} aria-disabled={isInCart} onClick={onClickBorrow}>{isInCart ? "In Cart" : "Borrow"}</button>}
           </div>
         </div>
       </div>
