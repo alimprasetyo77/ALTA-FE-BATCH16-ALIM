@@ -1,6 +1,5 @@
-import { authLogin, authRegister } from "./types"
+import { loginSchema, registerSchema, LoginSchema, RegisterSchema, } from "./types";
 import { handleLogin, handleRegister } from "./api"
 
-export { handleLogin, handleRegister }
-export type { authLogin, authRegister }
-
+export { handleLogin, handleRegister, loginSchema, registerSchema }
+export type { LoginSchema, RegisterSchema };

@@ -8,9 +8,9 @@ interface Props {
 
 const Layout = ({ children }: Readonly<Props>) => {
   return (
-    <div className="font-roboto  min-h-screen">
+    <div className="font-roboto  min-h-screen ">
       <Navbar />
-      <div className="bg-gray-100 h-full flex">
+      <div className="bg-gray-100 dark:bg-gray-800 h-full flex">
         <SideBar />
         {children}
       </div>

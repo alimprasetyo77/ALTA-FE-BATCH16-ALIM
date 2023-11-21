@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axiosWithConfig from "../axiosWithConfig";
 import { Response } from "../../types/api";
-import { authRegister } from "./types";
-
-export const handleLogin = async (email: string, password: string) => {
+import { LoginSchema, RegisterSchema } from ".";
+export const handleLogin = async (data: LoginSchema) => {
   try {
     const response = await axiosWithConfig.post("https://hells-kitchen.onrender.com/api/v1/login", {
-      email: email,
-      password: password
+      email: data.email,
+      password: data.password
     })
     return response.data as Response<{ token: string }>
   } catch (error: any) {
@@ -15,8 +14,8 @@ export const handleLogin = async (email: string, password: string) => {
   }
 }
 
-export const handleRegister = async (param: authRegister) => {
-  const { full_name, email, password, role, address, phone_number } = param
+export const handleRegister = async (data: RegisterSchema) => {
+  const { full_name, email, password, role, address, phone_number } = data
   try {
     const response = await axiosWithConfig.post("https://hells-kitchen.onrender.com/api/v1/register", {
       full_name,

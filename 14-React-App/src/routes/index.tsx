@@ -1,13 +1,14 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from "../pages"
 import Books from "../pages/books"
-import History from '../pages/books/History'
+import Dashboard from '../pages/admin/Dashboard'
 import Login from "../pages/auth/Login"
 import Register from '../pages/auth/Register'
 import Profile from '../pages/profile'
 import EditProfile from '../pages/profile/EditProfile'
 import DetailBook from '../pages/books/DetailBook'
 import ProtectedRoutes from './protected-routes'
+import MyBooks from '../pages/profile/MyBooks'
 const router = () => {
   const router = createBrowserRouter([
     {
@@ -22,8 +23,12 @@ const router = () => {
           element: <Books />
         },
         {
-          path: "/history",
-          element: <History />
+          path: "/history-borrow",
+          element: <MyBooks />
+        },
+        {
+          path: "/dashboard",
+          element: <Dashboard />
         },
         {
           path: "/login",

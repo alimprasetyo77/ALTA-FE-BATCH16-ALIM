@@ -4,8 +4,11 @@ import Layout from "../../components/Layout"
 import { getDetailBook } from "../../utils/apis/books/api"
 import { useParams } from "react-router-dom"
 import { Book } from "../../utils/apis/books"
+import { useToken } from "../../utils/contexts/token"
+import { createBorrow } from "../../utils/apis/borrow/api"
 const DetailBook = () => {
   const [book, setBook] = useState<Book>()
+  const { user } = useToken()
   const { id } = useParams()
   useEffect(() => {
     getBook()
@@ -19,21 +22,33 @@ const DetailBook = () => {
       console.log(error)
     }
   }
+
+  const borrowBook = async () => {
+    const date = {
+      bookId: [3, 4],
+      borrow_date: new Date()
+    }
+    try {
+      const result = await createBorrow(date)
+      alert(result.message)
+    } catch (error) {
+      alert(error)
+    }
+  }
   return (
     <Layout>
       <div className="p-8 grow">
-        <div className="bg-white rounded border shadow-sm flex flex-col xl:flex-row gap-16 items-center xl:items-start justify-center p-10">
+        <div className="bg-white dark:bg-gray-900 dark:text-white dark:border-gray-800 rounded-xl border shadow-sm flex flex-col xl:flex-row gap-16 items-center xl:items-start justify-center p-10">
           <img src={`${book?.cover_image}`} alt="book" className="object-contain aspect-[3/4] w-52 md:w-64 lg:w-96 " />
           <div className="grow xl:w-1/2 flex flex-col justify-center p-4 gap-y-8">
             <h1 className="font-semibold text-4xl font-Montserrat">{book?.title}</h1>
-            <h3 className="text-gray-500 font-semibold text-lg">{book?.category}</h3>
-            <p className="text-gray-900 tracking-wide text-base ">{book?.description}</p>
-            <div className="w-1/5 border rounded px-12 py-2 border-gray-300 shadow-sm flex flex-col items-center ">
-              <span className="text-sm text-gray-500 whitespace-nowrap">Author</span>
-              <span className="text-sm font-semibold text-gray-800 whitespace-nowrap">{book?.author}</span>
+            <h3 className="text-gray-500 dark:text-white font-semibold text-lg">{book?.category}</h3>
+            <p className="text-gray-900 dark:text-white tracking-wide text-base ">{book?.description}</p>
+            <div className="w-1/5 border rounded px-12 py-2 border-gray-300 dark:border-gray-600 shadow-sm flex flex-col items-center ">
+              <span className="text-sm text-gray-500 dark:text-white whitespace-nowrap">Author</span>
+              <span className="text-sm font-semibold text-gray-800 dark:text-white whitespace-nowrap">{book?.author}</span>
             </div>
-            <button className="w-1/4 px-10 py-3 rounded bg-sky-400 text-white font-semibold text-sm">Borrow</button>
-
+            {user.role === "user" && <button className="w-1/4 px-10 py-3 rounded bg-sky-400 text-white font-semibold text-sm" onClick={borrowBook}>Borrow</button>}
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ import { Book, getBooks } from "../../utils/apis/books"
 
 const Books = () => {
   const [books, setBooks] = useState<Book[]>([])
+  // const [searchValue, setSearchValue] = useState("")
   useEffect(() => {
     fetchData()
 
@@ -20,15 +21,21 @@ const Books = () => {
       console.log(error)
     }
   }
+
+  // const handleSearch = (e: { preventDefault: () => void }) => {
+  //   e.preventDefault()
+  //   const filter = books.filter(value => value.title.includes(searchValue.toLowerCase()))
+  //   console.log(filter)
+  // }
   return (
     <Layout>
       <div className="py-16 px-32 w-full space-y-8">
-        <div className="border bg-white rounded ">
-          <div className="flex justify-between items-center px-5 border-b">
-            <input type="search" className="px-4 py-8 w-full outline-none" placeholder="Find books ?" />
-            <BiSearch class={"text-xl cursor-pointer"} />
-          </div>
-        </div>
+        <form className="border dark:border-gray-800 bg-white  rounded-lg overflow-hidden flex items-stretch">
+          <input type="search" className="px-8 py-8 w-full outline-none dark:bg-gray-900 dark:text-white" placeholder="Find books ?" />
+          <button className="w-16 bg-white flex items-center justify-center cursor-pointer">
+            <BiSearch class={"text-xl "} />
+          </button>
+        </form>
         <div className="grid grid-cols-4 gap-10">
           {books.map(book => (
             <CardBook key={book.id} data={book} />

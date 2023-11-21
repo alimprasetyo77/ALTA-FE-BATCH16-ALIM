@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axiosWithConfig from "../axiosWithConfig";
-import { Profile, ProfilePayload } from ".";
+import { Profile } from ".";
 import { PayloadPagination, Response } from "../../types/api";
-import { Borrow } from "./types";
+import { Borrow, ProfileUpdateType } from "./types";
 
 export const getProfile = async () => {
   try {
@@ -16,11 +16,10 @@ export const getProfile = async () => {
   }
 };
 
-export const updateProfile = async (body: ProfilePayload) => {
+export const updateProfile = async (body: ProfileUpdateType) => {
   try {
     const response = await axiosWithConfig.put(
-      "https://hells-kitchen.onrender.com/api/v1/users",
-      body
+      "https://hells-kitchen.onrender.com/api/v1/users", body
     );
 
     return response.data as Response;
