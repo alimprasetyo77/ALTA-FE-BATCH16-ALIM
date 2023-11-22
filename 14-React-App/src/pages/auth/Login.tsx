@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { FaSpinner } from "react-icons/fa"
 import Navbar from "../../components/Navbar"
@@ -6,6 +7,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { useToken } from "../../utils/contexts/token"
 import { useNavigate } from "react-router-dom"
+import { errorToast, successToast } from "../../utils/toast"
+
+
 
 const Login = () => {
   const { changeToken } = useToken()
@@ -21,13 +25,12 @@ const Login = () => {
   const login = async (data: LoginSchema) => {
     try {
       const result = await handleLogin(data)
-      // const token = result.payload.token
-      // localStorage.setItem("token", token)
       changeToken(result.payload.token);
+      successToast(`${result.message}`)
       navigate("/")
-      alert("Login Successfuly.")
-    } catch (error) {
-      alert(error)
+    } catch (error: any) {
+      errorToast(error.toString())
+
     }
   }
 

@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useForm } from "react-hook-form"
 import { CreateBookSchema, createBookSchema } from "../../utils/apis/books/types"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { createBook } from "../../utils/apis/books/api"
 import { FaSpinner } from "react-icons/fa"
+import { errorToast, successToast } from "../../utils/toast"
 
 interface props {
   isOpen?: boolean
@@ -28,11 +30,11 @@ const Modal = ({ isOpen, closeModal }: props) => {
   const onSumbit = async (data: CreateBookSchema) => {
     try {
       const result = await createBook(data)
-      alert(result.message)
       closeModal()
       reset()
-    } catch (error) {
-      alert(error)
+      successToast(result.message)
+    } catch (error: any) {
+      errorToast(error.toString())
     }
   }
   return (

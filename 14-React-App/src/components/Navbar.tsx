@@ -35,10 +35,10 @@ const Navbar = () => {
           {token ?
             <>
               {user.role === "user" &&
-                <button className="w-14 h-14 p-4 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 relative" onClick={() => setCartSheetActive(!cartSheetActive)}>
-                  <FaShoppingCart className={"text-[22px] text-gray-700 dark:text-gray-100"} />
-                  <div className="text-xs font-medium font-Montserrat absolute top-2 right-2 flex items-center justify-center bg-gray-600 dark:bg-gray-100 w-4 rounded-full">
-                    <span className="text-white dark:text-gray-900 font-semibold">{cart.length}</span>
+                <button className="w-14 h-14 p-4 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 relative " onClick={() => setCartSheetActive(!cartSheetActive)}>
+                  <FaShoppingCart className={"text-[22px] text-gray-700 dark:text-gray-100 "} />
+                  <div className="text-xs font-medium font-Montserrat absolute top-2 right-2 flex items-center justify-center bg-gray-100 dark:bg-white w-4 rounded-full border">
+                    <span className="text-gray-900  font-semibold ">{cart.length}</span>
                   </div>
                 </button>
               }

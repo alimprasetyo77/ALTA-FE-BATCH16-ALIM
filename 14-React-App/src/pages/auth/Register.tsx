@@ -7,12 +7,11 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { FaSpinner } from "react-icons/fa"
 import { useState } from "react"
+import { errorToast, successToast } from "../../utils/toast"
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false)
-
   const navigate = useNavigate()
-
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -29,11 +28,10 @@ const Register = () => {
   const onRegister = async (data: RegisterSchema) => {
     try {
       const result = await handleRegister(data)
-      alert(result.message)
+      successToast(result.message)
       navigate("/login")
     } catch (error: any) {
-      alert(error)
-
+      errorToast(error.toString())
     }
   }
   return (

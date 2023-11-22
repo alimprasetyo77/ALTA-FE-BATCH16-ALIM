@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom"
 import { Book } from "../../utils/apis/books"
 import { useToken } from "../../utils/contexts/token"
 import useCartStore from "../../utils/state"
+import { successToast } from "../../utils/toast"
 const DetailBook = () => {
   const { cart, addBook } = useCartStore()
   const [book, setBook] = useState<Book>()
@@ -35,11 +36,11 @@ const DetailBook = () => {
 
   function onClickBorrow() {
     addBook(book!);
-    alert("Book has been added to cart.")
+    successToast("Book has been added to cart.", "top-center")
   }
   return (
     <Layout>
-      <div className="p-8 grow">
+      <div className="p-8  mx-auto container min-h-screen">
         <div className="bg-white dark:bg-gray-900 dark:text-white dark:border-gray-800 rounded-xl border shadow-sm flex flex-col xl:flex-row gap-16 items-center xl:items-start justify-center p-10">
           <img src={`${book?.cover_image}`} alt="book" className="object-contain aspect-[3/4] w-52 md:w-64 lg:w-96 " />
           <div className="grow xl:w-1/2 flex flex-col justify-center p-4 gap-y-8">

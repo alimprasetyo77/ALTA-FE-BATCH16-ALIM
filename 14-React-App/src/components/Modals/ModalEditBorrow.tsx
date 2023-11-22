@@ -9,6 +9,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FaSpinner } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { errorToast, successToast } from "../../utils/toast";
 
 interface props {
   id: string;
@@ -60,10 +61,10 @@ const ModalEditBorrow = ({ id, isOpen, closeModal }: props) => {
   const onSubmit = async (data: BorrowPayload) => {
     try {
       const result = await updateBorrow(id, data);
-      alert(result.message);
       closeModal()
-    } catch (error) {
-      alert(error);
+      successToast(result.message)
+    } catch (error: any) {
+      errorToast(error.toString())
     }
   };
 

@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { Book, CreateBookSchema, createBookSchema } from "../../utils/apis/books/types"
 import { getDetailBook, updateBook } from "../../utils/apis/books"
 import { FaSpinner } from "react-icons/fa"
 import { useEffect, useState } from "react"
+import { errorToast, successToast } from "../../utils/toast"
 
 interface props {
   isOpen?: boolean
@@ -13,10 +15,7 @@ interface props {
 
 const ModalEditBook = ({ isOpen, closeModal, id }: props) => {
   const categories = ["Fiction", "Fantasy", "Mystery", "Romance", "Science", "History", "Business", "Children", "Thriller", "Biography", "Religion", "CookBooks", "Horror", "Psychology"]
-
   const [book, setBook] = useState<Book>()
-
-
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm({
     resolver: zodResolver(createBookSchema),
     defaultValues: {
@@ -61,10 +60,10 @@ const ModalEditBook = ({ isOpen, closeModal, id }: props) => {
   const onSumbit = async (data: CreateBookSchema) => {
     try {
       const result = await updateBook(id!, data)
-      alert(result.message)
       closeModal()
-    } catch (error) {
-      alert(error)
+      successToast(result.message)
+    } catch (error: any) {
+      errorToast(error.toString())
     }
   }
   return (

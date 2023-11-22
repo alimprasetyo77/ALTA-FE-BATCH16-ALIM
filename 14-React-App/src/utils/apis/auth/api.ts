@@ -2,6 +2,7 @@
 import axiosWithConfig from "../axiosWithConfig";
 import { Response } from "../../types/api";
 import { LoginSchema, RegisterSchema } from ".";
+
 export const handleLogin = async (data: LoginSchema) => {
   try {
     const response = await axiosWithConfig.post("https://hells-kitchen.onrender.com/api/v1/login", {
@@ -15,19 +16,10 @@ export const handleLogin = async (data: LoginSchema) => {
 }
 
 export const handleRegister = async (data: RegisterSchema) => {
-  const { full_name, email, password, role, address, phone_number } = data
   try {
-    const response = await axiosWithConfig.post("https://hells-kitchen.onrender.com/api/v1/register", {
-      full_name,
-      email,
-      password,
-      role,
-      address,
-      phone_number,
-    });
-
+    const response = await axiosWithConfig.post("https://hells-kitchen.onrender.com/api/v1/register", data);
     return response.data as Response;
   } catch (error: any) {
-    throw new Error(error.response.data.message);
+    throw Error(error.response.data.message);
   }
 };

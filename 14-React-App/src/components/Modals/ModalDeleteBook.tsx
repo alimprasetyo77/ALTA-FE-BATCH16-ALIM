@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { deleteBook } from "../../utils/apis/books"
+import { errorToast, successToast } from "../../utils/toast"
 
 interface props {
   isOpen?: boolean
@@ -10,10 +12,10 @@ const ModalDeleteBook = ({ isOpen, closeModal, id, titleBook }: props) => {
   const handleDelete = async () => {
     try {
       const result = await deleteBook(id as string)
-      alert(result.message)
       closeModal()
-    } catch (error) {
-      alert(error)
+      successToast(result.message)
+    } catch (error: any) {
+      errorToast(error.toString())
     }
   }
   return (

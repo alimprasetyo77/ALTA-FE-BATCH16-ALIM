@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { deleteBorrow } from '../../utils/apis/borrow/api'
+import { errorToast, successToast } from '../../utils/toast'
 interface props {
   isOpen?: boolean
   closeModal: () => void
@@ -8,10 +10,10 @@ const ModalDeleteBorrow = ({ isOpen, closeModal, id }: props) => {
   const handleDelete = async () => {
     try {
       const result = await deleteBorrow(id as string)
-      alert(result.message)
+      successToast(result.message)
       closeModal()
-    } catch (error) {
-      alert(error)
+    } catch (error: any) {
+      errorToast(error.toString())
     }
   }
   return (

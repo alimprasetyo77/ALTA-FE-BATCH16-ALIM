@@ -22,8 +22,9 @@ const ModalMenuProfile = ({ closeModal, active }: props) => {
   }
 
   const logout = () => {
+    closeModal()
     localStorage.removeItem("token")
-    window.location.href = "/"
+    window.location.reload()
   }
   return (
     <>
