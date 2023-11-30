@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axiosWithConfig from "../axiosWithConfig";
 import { Profile } from ".";
-import { PayloadPagination, Response } from "../../types/api";
+import { PayloadPagination, Request, Response } from "../../types/api";
 import { Borrow, ProfileUpdateType } from "./types";
 
 export const getProfile = async () => {
@@ -40,9 +40,24 @@ export const deleteProfile = async () => {
   }
 };
 
-export const getBooksBorrow = async () => {
+export const getBooksBorrow = async (params: Request) => {
   try {
-    const response = await axiosWithConfig.get("https://hells-kitchen.onrender.com/api/v1/borrows")
+    let query = "";
+
+    if (params) {
+      const queryParams: string[] = [];
+
+      let key: keyof typeof params;
+      for (key in params) {
+        queryParams.push(`${key}=${params[key]}`);
+      }
+
+      query = queryParams.join("&");
+    }
+
+    const url = query ? `/borrows?${query}` : "/borrows";
+
+    const response = await axiosWithConfig.get("https://hells-kitchen.onrender.com/api/v1/" + url)
     return response.data as Response<PayloadPagination<Borrow[]>>
   } catch (error: any) {
     throw Error(error.response.data.message)
